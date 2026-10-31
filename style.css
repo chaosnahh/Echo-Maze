@@ -1,0 +1,44 @@
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:#030303;color:#D6D0C5;overflow:hidden;touch-action:none;font-family:Georgia,'Palatino Linotype',serif;-webkit-user-select:none;user-select:none}
+#c{position:fixed;inset:0;width:100%;height:100%}
+#ui{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,3,3,.55)}
+#ui.on{display:flex;animation:f .9s}
+@keyframes f{from{opacity:0}}
+.scr{display:none;flex-direction:column;align-items:center;gap:.7rem;padding:1.5rem;text-align:center;max-width:30rem;line-height:1.5;font-size:1rem}
+.scr.on{display:flex}
+h1{font-weight:400;font-size:clamp(2.2rem,9vw,4rem);letter-spacing:.35em;margin-right:-.35em}
+h2{font-weight:400;font-style:italic;font-size:1.8rem;margin-bottom:.5rem}
+.sub{font-style:italic;color:#8d887e;margin-bottom:1.5rem}
+button{background:none;border:1px solid #3a3a3d;color:inherit;padding:.8rem 1.6rem;min-width:14rem;min-height:44px;font:inherit;letter-spacing:.08em;cursor:pointer;transition:border-color .4s,box-shadow .4s}
+button:hover,button:focus-visible{border-color:#EAEAEA;box-shadow:0 0 18px rgba(234,234,234,.25);outline:none}
+button:disabled{opacity:.3;pointer-events:none}
+#cont{display:none}#cont.on{display:block}
+label{display:flex;gap:.8rem;align-items:center;justify-content:space-between;width:100%;color:#b5afa4}
+input[type=range]{width:50%;accent-color:#EAEAEA}input[type=checkbox]{accent-color:#EAEAEA;width:1.1rem;height:1.1rem}
+#lvl{display:flex;flex-direction:column;gap:.7rem}
+#fuel,#pb{display:none}
+body.play #fuel{display:block;position:fixed;top:0;left:0;right:0;height:2px}
+#fuel i{display:block;height:100%;background:#EAEAEA;transform-origin:left}
+body.play #pb{display:block;position:fixed;top:.8rem;right:.8rem;min-width:44px;padding:.4rem;opacity:.5}
+#joy{position:fixed;width:100px;height:100px;border-radius:50%;border:1px solid rgba(214,208,197,.25);background:rgba(214,208,197,.05);display:none;pointer-events:none}
+#joy b{position:absolute;left:35px;top:35px;width:30px;height:30px;border-radius:50%;background:rgba(214,208,197,.3)}
+@media(prefers-reduced-motion:reduce){#ui.on{animation:none}}
+body::after{content:'';position:fixed;inset:-50%;pointer-events:none;opacity:.07;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:g 1s steps(4) infinite}@keyframes g{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}@media(prefers-reduced-motion:reduce){body::after{animation:none}}
+button{font-weight:300}
+#menu{max-width:none}h1{white-space:nowrap}
+
+.scr{max-height:100%;overflow-y:auto;touch-action:pan-y}
+button{background:rgba(16,16,18,.72);backdrop-filter:blur(2px);position:relative;overflow:hidden}
+button::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(234,234,234,.12),transparent);transform:translateX(-100%);transition:transform .7s}
+button:hover::before,button:focus-visible::before{transform:translateX(100%)}
+button:hover,button:focus-visible{background:rgba(30,30,33,.85);letter-spacing:.11em}
+button{transition:border-color .4s,box-shadow .4s,letter-spacing .4s,background .4s}
+button small{display:block;font-size:.7rem;letter-spacing:.12em;color:#8d887e;text-transform:uppercase}
+button.done{border-color:#6a6a6e}button.done small::before{content:'\2713  '}
+.lst{display:flex;flex-direction:column;gap:.6rem;width:100%;align-items:center}
+h1{text-shadow:0 0 24px rgba(234,234,234,.25);animation:fl 5s infinite}@keyframes fl{0%,100%{opacity:1}48%{opacity:.92}50%{opacity:.7}52%{opacity:.95}}
+#card{display:none;position:fixed;left:0;right:0;top:18%;text-align:center;pointer-events:none;color:#b5afa4;font-style:italic;letter-spacing:.15em;line-height:1.8}
+#card b{font-weight:400;font-size:1.3rem;color:#EAEAEA}
+#card.on{display:block;animation:cd 4.5s forwards}@keyframes cd{0%{opacity:0}15%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@media(max-width:480px){.scr{padding:1rem}button{min-width:12rem}}
+@media(max-height:480px){h1{font-size:2rem}.sub{margin-bottom:.4rem}.scr{gap:.35rem;padding:.6rem}button{padding:.45rem 1.2rem;min-height:38px}h2{font-size:1.4rem;margin-bottom:.2rem}}
